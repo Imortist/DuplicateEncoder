@@ -8,14 +8,12 @@
 class DuplicateEncoder {
     static String encode(String word) {
         word = word.toLowerCase();
+        String result = "";
         for(char c : word.toCharArray()) {
-            //TODO: place check for ) and ( here.
-            if (Character.isLetterOrDigit(c)) {
-                if (word.indexOf(c) == word.lastIndexOf(c) && c != ')' && c != '(')
-                    word = word.replace(c, '(');
-                else word = word.replace(c, ')');
-            }
+            if (word.indexOf(c) == word.lastIndexOf(c))
+                result += "(";
+            else result += ")";
         }
-        return word;
+        return result;
     }
 }
